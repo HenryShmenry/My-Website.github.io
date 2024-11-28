@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YSTV Credits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>/*Style Box*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: black;
+            font-size: 25px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #e9e9e9;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Normal mode */
+        .topnav a:hover {
+            background-color: #fa0808;
+            color: whitesmoke;
+        }
+
+        /* Dark mode */
+        .dark-mode-topnav a:hover {
+            background-color: #4a90e2 !important; /* Light blue color */
+            color: whitesmoke !important;
+        }
+
+        .topnav a.active,
+        .dark-mode-topnav a.active {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .dark-mode-topnav a.active:hover {
+            background-color: #4a90e2 !important; /* Light blue color */
+            color: whitesmoke !important;
+        }
+
+        .switch {
+            position: absolute;
+            top: -24px;
+            transform: translateY(-50%);
+            right: 10px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffec1a;
+            border-radius: 34px;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #3a14d1;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .header {
+            color: white;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .dark-mode-body {
+            background-color: rgb(0, 0, 0) !important;
+            color: rgb(227, 227, 227) !important;
+        }
+
+        .dark-mode-header {
+            background-color: red !important;
+            color: whitesmoke !important;
+        }
+
+        .dark-mode-topnav {
+            background-color: rgb(50,50,50) !important;
+        }
+
+        .dark-mode-topnav a {
+            background-color: rgb(50,50,50) !important;
+            color: whitesmoke !important;
+        }
+
+        .dark-mode-topnav #ystvLink.active {
+            background-color: red !important;
+            color: white !important;
+        }
+
+        .grid-container {
+            display: grid; /* Enables CSS Grid layout, allowing for control over rows and columns */
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Creates responsive columns that are at least 250px wide, filling available space */
+            gap: 10px; /* Adds 20px of space between each grid item (the anime boxes) */
+            padding: 0px; /* Adds 10px of padding around the grid container */
+            place-items: center; /* Centers each grid item (anime box) both horizontally and vertically within its grid cell */
+        }
+        
+        /* Things for password box to work */
+        .centera {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #passwordInput {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        margin: -76px 0 0 -76px;
+        border: 16px solid #f3f3f3;
+        border-radius: 0%;
+        border-top: 20px solid black;
+        border-right: 20px solid red;
+        border-bottom: 20px solid yellow;
+        border-left: 20px solid blue;
+        width: 30px;
+        height: 30px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+
+        /* Add animation to "page content" */
+        .animate-bottom {
+        position: relative;
+        -webkit-animation-name: animatebottom;
+        -webkit-animation-duration: 1s;
+        animation-name: animatebottom;
+        animation-duration: 1s
+        }
+
+        @-webkit-keyframes animatebottom {
+        from { bottom:-100px; opacity:0 } 
+        to { bottom:0px; opacity:1 }
+        }
+
+        @keyframes animatebottom { 
+        from{ bottom:-100px; opacity:0 } 
+        to{ bottom:0; opacity:1 }
+        }
+
+    </style>
+	</head>
+    <body onload="Loading()" style="margin:0;">
+		<div class="header">
+			<b>My YSTV Credits</b>
+		</div>
+		<div class="topnav">
+            <a href="./index.html">Home</a>
+            <a href="./About.html">About</a>
+            <a href="./CV.html">CV</a>
+            <a href="./Contact.html">Contact</a>
+            <a href="./MyAnimeList.html">MyAnimeList</a>
+            <a href="./Left4Dead.html">Left4Dead</a>
+            <a id="ystvLink" class="active" href="./ystvcredits.html">YSTV</a>
+            <a href="./Other.html">Other</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+		<div style="position: absolute;right:10px">
+			<label class="switch">
+                <input type="checkbox" id="modeToggle" onclick="DarkFunction()">
+                <span class="slider"></span>
+			</label>
+		</div>
+	</div>
+
+        <div id="content">
+            <img src="./content/YSTV.jpg" style="width:50%; aspect-ratio: 16/9; position: relative; left: 25%; image-rendering: optimizeQuality; object-fit: cover;"></img>
+
+            <div class="grid-container">
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/HsaW7dOaD38?si=i0J7FBLfO8C09xXW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/NprXTXFRe_M?si=AUn7qHQnRqqGUBpX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/ad-PoBMOj_s?si=AUMaQIKW7nPOVIZW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/vT9zgcHNgPc?si=4wWOdsJyDNv0FEK-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/nc3tUsYBB2o?si=33a-K142iDrg2Iaq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/CECY15vqXsk?si=-KKLamGrYqm-GUxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/KGRoVAzLvl0?si=e2deP555-vdnuacX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/B-tYwGxoZys?si=qQdvJUb_UQ5LAdKW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/eIcQ9BVS81A?si=Cjfa5BlYrCFZAzdZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/AnbVZod66Yw?si=YBcBIJLjAUDLlPaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/JCRodCgOk48?si=wYvdRYclk0vUnPzd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/ZwvqizSk04Q?si=JNEw0bcrkpEM7yiC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/Chs4E-AIeOI?si=s0jaunTmySD_Hw6D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/yPbi4UMzm1Y?si=mQdHB4tP43qupvVl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/PQ-LYzS4GPk?si=aaFoV7OXzYmApZq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/Lyt0bRUNlXg?si=rAmihr110vaacKt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/lazolDOPivA?si=ZLBiytvBl2JaDHf8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/T8dsLTOtZw0?si=AvD77tCSTRvMzIB0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/8Rg3RE5qZW0?si=QGQAR1zi7jgtP3y7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/yuEJxQLVD_Q?si=-aqJQr37jnt4U-tL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/zR1dLBN_7V4?si=JiM6n-uBxLqhn7N7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+		<script>
+		function DarkFunction() {
+        var body = document.body;
+        var isDarkMode = body.classList.toggle("dark-mode-body");
+        document.querySelector(".header").classList.toggle("dark-mode-header");
+        document.querySelector(".topnav").classList.toggle("dark-mode-topnav");
+
+        var links = document.querySelectorAll(".topnav a");
+        links.forEach(link => link.classList.toggle("dark-mode-topnav"));
+
+        // Ensure the correct active link is toggled
+        var activeLink = document.getElementById("aboutLink");
+        if (activeLink) {
+            activeLink.classList.toggle("dark-mode-active");
+        }
+
+        // Store the dark mode state in local storage
+        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+    }
+
+    // On page load, apply the dark mode if it was previously enabled
+    document.addEventListener('DOMContentLoaded', function () {
+        var darkModeStatus = localStorage.getItem('darkMode');
+        var checkbox = document.getElementById('modeToggle');
+        if (darkModeStatus === 'enabled') {
+            document.body.classList.add("dark-mode-body");
+            document.querySelector(".header").classList.add("dark-mode-header");
+            document.querySelector(".topnav").classList.add("dark-mode-topnav");
+            document.querySelectorAll(".topnav a").forEach(link => link.classList.add("dark-mode-topnav"));
+
+            // Ensure the correct active link is highlighted
+            var activeLink = document.getElementById("aboutLink");
+            if (activeLink) {
+                activeLink.classList.add("dark-mode-active");
+            }
+
+            // Update the state of the switch
+            checkbox.checked = true;
+        }
+    })
+
+    var myVar;
+
+    function Loading() {
+    myVar = setTimeout(showPage, 500);
+    }
+
+    function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("myDiv").style.display = "block";
+    }
+
+    function checkPassword() {
+    var password = document.getElementById("passwordInput").value;
+    var correctPassword = "YSTVWISE";
+
+    if (password === correctPassword) {
+        document.getElementById("content").style.display = "block"; // Show content
+        document.getElementById("passwordContainer").style.display = "none"; // Hide password box
+    } else {
+        alert("Nuh uh. try again.");
+    }
+    }   
+/* Log in Functions */
+    function login() {
+        localStorage.setItem('isLoggedIn', 'true');
+        showProtectedLinks();
+    }
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'index.html';
+        showProtectedLinks();
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+    showProtectedLinks();
+    });
+
+    function showProtectedLinks() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const protectedLinks = document.querySelectorAll('.protected');
+
+        protectedLinks.forEach(link => {
+            link.style.display = isLoggedIn ? 'block' : 'none';
+        });
+    }
+	</script>
+</body>
+</html>

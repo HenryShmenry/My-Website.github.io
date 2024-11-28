@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Left4Dead</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: black;
+            font-size: 25px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #e9e9e9;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Light and Dark Mode Styling */
+        .topnav a:hover {
+            background-color: #fa0808;
+            color: whitesmoke;
+        }
+        .dark-mode-topnav a:hover {
+            background-color: #4a90e2 !important;
+            color: whitesmoke !important;
+        }
+
+        .topnav a.active,
+        .dark-mode-topnav a.active {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .dark-mode-topnav a.active:hover {
+            background-color: #4a90e2 !important;
+            color: whitesmoke !important;
+        }
+
+        /* Dark Mode Styling for Body */
+        .dark-mode-body {
+            background-color: rgb(32, 32, 32) !important;
+            color: rgb(227, 227, 227) !important;
+        }
+
+        .dark-mode-header {
+            background-color: red !important;
+            color: whitesmoke !important;
+        }
+
+        .dark-mode-topnav {
+            background-color: rgb(50, 50, 50) !important;
+        }
+
+        .dark-mode-topnav a {
+            background-color: rgb(50, 50, 50) !important;
+            color: whitesmoke !important;
+        }
+
+        .header {
+            color: white;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        /* Toggle Switch for Dark Mode */
+        .switch {
+            position: absolute;
+            top: -24px;
+            transform: translateY(-50%);
+            right: 10px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffec1a;
+            border-radius: 34px;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #3a14d1;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Logo behind video */
+        .logo {
+            position: absolute;
+            top: 125px;
+            right: 25%;
+            width: 50%;
+            max-width: 600px;
+            margin: 0 auto;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .logo img {
+            max-width: 100%;
+        }
+
+        @media screen and (max-width: 600px) {
+            .logo img {
+                max-width: 75%;
+                width: auto;
+            }
+        }
+
+        /* Video on top of logo */
+        .sticky-video {
+            position: relative;
+            z-index: 2;
+            margin-top: 200px;
+        }
+        .content {
+            padding: 20px;
+            color: white;
+        }
+
+        @media screen and (max-width: 707.5px) {
+            .logo {
+                top: 200px;
+            }
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        @media screen and (max-width: 500px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 10px;
+            padding: 0px;
+            place-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <b>Left4Dead</b>
+    </div>
+    <div class="topnav">
+        <a href="./index.html">Home</a>
+        <a href="./About.html">About</a>
+        <a href="./CV.html">CV</a>
+        <a href="./Contact.html">Contact</a>
+        <a href="./MyAnimeList.html">MyAnimeList</a>
+        <a id="ldLink" class="active" href="./Left4Dead.html">Left4Dead</a>
+        <a href="./ystvcredits.html">YSTV</a>
+        <a href="./Other.html">Other</a>
+        <a href="#" onclick="logout()">Logout</a>
+        <div style="position: absolute;right:10px">
+            <label class="switch">
+                <input type="checkbox" id="modeToggle" onclick="DarkFunction()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="logo">
+        <picture>
+            <source media="(max-width: 600px)" srcset="./content/left4deadlogosmall.png">
+            <img src="./content/left4deadlogolarge.png" alt="Left4Dead Logo" style="width: 100%; max-width: 700px;">
+        </picture>
+    </div>
+
+    <div class="sticky-video">
+        <iframe width="100%" style="aspect-ratio: 21/9;" src="https://www.youtube-nocookie.com/embed/R0F02IdtG1E?si=WHRBGXA7tGOC-J6G" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="content">
+        <p>Shoot to kill. Kill all sons of bitches. Left4Dead is the a 4 player co-op survival game. Fight waves of the dead as
+            they try to claim your lives. There are a variety of survivors to play as. 
+        </p>
+        <div class="grid-container">
+            <div>
+                <img src="./content/nick.webp" alt="Nick">
+                <h2>Nick</h2>
+            </div>
+            <div>
+                <img src="./content/rochelle.webp" alt="Rochelle">
+                <h2>Rochelle</h2>
+            </div>
+            <div>
+                <img src="./content/ellis.webp" alt="Ellis">
+                <h2>Ellis</h2>
+            </div>
+            <div>
+                <img src="./content/coach.webp" alt="Coach">
+                <h2>Coach</h2>
+            </div>
+            <div>
+                <img src="./content/bill.webp" alt="Bill">
+                <h2>Bill</h2>
+            </div>
+            <div>
+                <img src="./content/francis.webp" alt="Francis">
+                <h2>Francis</h2>
+            </div>
+            <div>
+                <img src="./content/zoey.webp" alt="Zoey">
+                <h2>Zoey</h2>
+            </div>
+            <div>
+                <img src="./content/louis.webp" alt="Louis">
+                <h2>Louis</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function DarkFunction() {
+            var body = document.body;
+            var isDarkMode = body.classList.toggle("dark-mode-body");
+            document.querySelector(".header").classList.toggle("dark-mode-header");
+            document.querySelector(".topnav").classList.toggle("dark-mode-topnav");
+            document.querySelectorAll(".topnav a").forEach(link => link.classList.toggle("dark-mode-topnav"));
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var darkModeStatus = localStorage.getItem('darkMode');
+            var checkbox = document.getElementById('modeToggle');
+            if (darkModeStatus === 'enabled') {
+                document.body.classList.add("dark-mode-body");
+                document.querySelector(".header").classList.add("dark-mode-header");
+                document.querySelector(".topnav").classList.add("dark-mode-topnav");
+                document.querySelectorAll(".topnav a").forEach(link => link.classList.add("dark-mode-topnav"));
+                checkbox.checked = true;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

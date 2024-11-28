@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anime</title>
+    <style>/*Style Box*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(227, 227, 227);
+            color: black;
+            font-size: 25px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #e9e9e9;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Normal mode */
+        .topnav a:hover {
+            background-color: #fa0808;
+            color: whitesmoke;
+        }
+
+        /* Dark mode */
+        .dark-mode-topnav a:hover {
+            background-color: #4a90e2 !important; /* Light blue color */
+            color: whitesmoke !important;
+        }
+
+        .topnav a.active,
+        .dark-mode-topnav a.active {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .dark-mode-topnav a.active:hover {
+            background-color: #4a90e2 !important; /* Light blue color */
+            color: whitesmoke !important;
+        }
+
+        .switch {
+            position: absolute;
+            top: -24px;
+            transform: translateY(-50%);
+            right: 10px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffec1a;
+            border-radius: 34px;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #3a14d1;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .header {
+            color: white;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .dark-mode-body {
+            background-color: rgb(32, 32, 32) !important;
+            color: rgb(227, 227, 227) !important;
+        }
+
+        .dark-mode-header {
+            background-color: red !important;
+            color: whitesmoke !important;
+        }
+
+        .dark-mode-topnav {
+            background-color: rgb(50,50,50) !important;
+        }
+
+        .dark-mode-topnav a {
+            background-color: rgb(50,50,50) !important;
+            color: whitesmoke !important;
+        }
+
+        .dark-mode-topnav #animeLink.active {
+            background-color: red !important;
+            color: white !important;
+        }
+
+        #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        margin: -76px 0 0 -76px;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 20px solid black;
+        border-right: 20px solid red;
+        border-bottom: 20px solid yellow;
+        border-left: 20px solid blue;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+
+        /* Add animation to "page content" */
+        .animate-bottom {
+        position: relative;
+        -webkit-animation-name: animatebottom;
+        -webkit-animation-duration: 1s;
+        animation-name: animatebottom;
+        animation-duration: 1s
+        }
+
+        @-webkit-keyframes animatebottom {
+        from { bottom:-100px; opacity:0 } 
+        to { bottom:0px; opacity:1 }
+        }
+
+        @keyframes animatebottom { 
+        from{ bottom:-100px; opacity:0 } 
+        to{ bottom:0; opacity:1 }
+        }
+
+        #myDiv {
+        display: none;
+        text-align: center;
+        }
+
+        .grid-container {
+            display: grid; /* Enables CSS Grid layout, allowing for control over rows and columns */
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Creates responsive columns that are at least 250px wide, filling available space */
+            gap: 10px; /* Adds 20px of space between each grid item (the anime boxes) */
+            padding: 0px; /* Adds 10px of padding around the grid container */
+            place-items: center; /* Centers each grid item (anime box) both horizontally and vertically within its grid cell */
+        }
+
+        #animebox {
+            background-color: #303030; /* Sets the background color of each anime box */
+            color: white; /* Sets the text color inside the anime box to white */
+            padding: 0; /* Removes default padding inside the anime box */
+            margin: 0; /* Removes default margin around the anime box */
+            border-radius: 5px; /* Rounds the corners of the anime box by 15px */
+            width: clamp(350px, 75%, 500px); /* Limits the width of each anime box to a minimum of 100px, maximum of 500px, scaling to 50% of the container width if in between */
+            aspect-ratio: 16/9; /* Ensures that each anime box remains a square by setting the height equal to the width */
+            display: flex; /* Enables Flexbox layout within each anime box for flexible alignment of inner content */
+            flex-direction: column; /* Aligns content (like text) vertically within the anime box */
+            align-items: center; /* Centers content horizontally within the anime box */
+            justify-content: flex-end; /* Aligns content vertically to the bottom of the anime box */
+            background-size: cover; /* Ensures the background image covers the entire anime box without distortion */
+            background-position: center; /* Centers the background image within the anime box */
+            background-repeat: no-repeat;
+        }
+
+        .animebox {
+            background-color: #303030;
+            color: white;
+            padding: 0;
+            margin: 0;
+            border-radius: 5px;
+            width: clamp(350px, 75%, 500px);
+            aspect-ratio: 16/9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(hsla(300, 50%, 50%, 0), 60%, black); /* Gradient overlay */
+            text-align: center;
+        }
+
+        .animebox h2 {
+            font-size: clamp(15px, 1.5vw, 20px); /* Min: 16px, Responsive: 2vw, Max: 24px */
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+
+        #animeForm {
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        #animeForm label {
+            font-weight: bold;
+        }
+
+        #animeForm input, #animeForm button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body onload="Loading()" style="margin:0;">
+    <div class="header"><b>My Anime List</b></div>
+    <div class="topnav">
+        <a href="./index.html">Home</a>
+        <a href="./About.html">About</a>
+        <a href="./CV.html">CV</a>
+        <a href="./Contact.html">Contact</a>
+        <a id="animeLink" class="active" href="./MyAnimeList.html">MyAnimeList</a>
+        <a href="./Left4Dead.html">Left4Dead</a>
+        <a href="./ystvcredits.html">YSTV</a>
+        <a href="./Other.html">Other</a>
+        <a href="#" onclick="logout()">Logout</a>
+        <div style="position: absolute; right: 10px;">
+            <label class="switch">
+                <input type="checkbox" id="modeToggle" onclick="DarkFunction()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div id="loader"></div>
+    <div style="display:none; text-align: center;" id="animeListContainer" class="animate-bottom">
+        <div style="padding-top: 15px; padding-bottom: 10px;"><b>Welcome to my Anime List!</b></div>
+        <div style="padding-top: 0px; padding-bottom: 15px; font-size: small;">(Click for Themes)</div>
+        <div class="grid-container" id="animeGridContainer"></div>
+    </div>
+    <script>
+        function DarkFunction() {
+        var body = document.body;
+        var isDarkMode = body.classList.toggle("dark-mode-body");
+        document.querySelector(".header").classList.toggle("dark-mode-header");
+        document.querySelector(".topnav").classList.toggle("dark-mode-topnav");
+
+        var links = document.querySelectorAll(".topnav a");
+        links.forEach(link => link.classList.toggle("dark-mode-topnav"));
+
+        // Ensure the correct active link is toggled
+        var activeLink = document.getElementById("animeLink");
+        if (activeLink) {
+            activeLink.classList.toggle("dark-mode-active");
+        }
+
+        // Store the dark mode state in local storage
+        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+    }
+
+    // On page load, apply the dark mode if it was previously enabled
+    document.addEventListener('DOMContentLoaded', function () {
+        var darkModeStatus = localStorage.getItem('darkMode');
+        var checkbox = document.getElementById('modeToggle');
+        if (darkModeStatus === 'enabled') {
+            document.body.classList.add("dark-mode-body");
+            document.querySelector(".header").classList.add("dark-mode-header");
+            document.querySelector(".topnav").classList.add("dark-mode-topnav");
+            document.querySelectorAll(".topnav a").forEach(link => link.classList.add("dark-mode-topnav"));
+
+            // Ensure the correct active link is highlighted
+            var activeLink = document.getElementById("animeLink");
+            if (activeLink) {
+                activeLink.classList.add("dark-mode-active");
+            }
+
+            // Update the state of the switch
+            checkbox.checked = true;
+        }
+    })
+
+    var myVar;
+
+    function Loading() {
+    myVar = setTimeout(showPage, 500);
+    }
+
+    function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("animeListContainer").style.display = "block";
+    }
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'index.html';
+        showProtectedLinks();
+    }
+    function showProtectedLinks() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const protectedLinks = document.querySelectorAll('.protected');
+
+        protectedLinks.forEach(link => {
+            link.style.display = isLoggedIn ? 'block' : 'none';
+        });
+    }
+
+    const animeList = [
+    { title: "Attack on Titan",                                                     imageURL: "./content/AOT.jpg",          musicURL: "./audio/AOTTheme.mp3"},
+    { title: "My Hero Academia",                                                    imageURL: "./content/MHA.avif",         musicURL: "./audio/MHAs7Theme.mp3"},
+    { title: "Mashle: Magic and Muscles",                                           imageURL: "./content/MMAM.avif",        musicURL: "./audio/MashleTheme.mp3"},
+    { title: "Solo Leveling",                                                       imageURL: "./content/SL.avif",          musicURL: "./audio/SoloLevelingTheme.mp3"},
+    { title: "Jujutsu Kaisen",                                                      imageURL: "./content/JJK.jpe",          musicURL: "./audio/JJKTheme.mp3"},
+    { title: "Ranking of Kings",                                                    imageURL: "./content/ROKTTOC.avif",     musicURL: "./audio/RankingOfKingsTheme.mp3"},
+    { title: "Kabaneri of the Iron Fortress",                                       imageURL: "./content/KOTIF.jpe",        musicURL: "./audio/KabaneriTheme.mp3"},
+    { title: "Goblin Slayer",                                                       imageURL: "./content/GS.avif",          musicURL: "./audio/GoblinSlayerTheme.mp3"},
+    { title: "Cells at Work!",                                                      imageURL: "./content/CAW.avif",         musicURL: "./audio/CellsAtWorkTheme.mp3"},
+    { title: "Migi & Dali",                                                         imageURL: "./content/MAD.jpe",          musicURL: "./audio/MigiDaliTheme.mp3"},
+    { title: "Naruto",                                                              imageURL: "./content/N.avif",           musicURL: "./audio/NarutoTheme.mp3"},
+    { title: "Naruto Shippuden",                                                    imageURL: "./content/NS.avif",          musicURL: "./audio/NarutoSTheme.mp3"},
+    { title: "Spy x Family",                                                        imageURL: "./content/SF.avif",          musicURL: "./audio/SpyFamilyTheme.mp3"},
+    { title: "Dr. Stone",                                                           imageURL: "./content/DS.avif",          musicURL: "./audio/DrStoneTheme.mp3"},
+    { title: "One Punch Man",                                                       imageURL: "./content/OPM.avif",         musicURL: "./audio/OPMTheme.mp3"},
+    { title: "SK8 the Infinity",                                                    imageURL: "./content/SK8TI.avif",       musicURL: "./audio/SK8Theme.mp3"},
+    { title: "Parasyte -the maxim-",                                                imageURL: "./content/PTM.jpe",          musicURL: "./audio/ParasyteTheme.mp3"},
+    { title: "Death Note",                                                          imageURL: "./content/DN.avif",          musicURL: "./audio/DeathNoteTheme.mp3" },
+    { title: "My Deer Friend Nokotan",                                              imageURL: "./content/MDFN.avif",        musicURL: "./audio/NokotanTheme.mp3"},
+    { title: "Suzume",                                                              imageURL: "./content/S.avif",           musicURL: "./audio/SuzumeTheme.mp3"},
+    { title: "Hunter X Hunter",                                                     imageURL: "./content/HXH.avif",         musicURL: "./audio/HXHTheme.mp3"},
+    { title: "JoJo's Bizarre Adventure",                                            imageURL: "./content/JJBA.jpe",         musicURL: "./audio/JoJoTheme.mp3"},
+    { title: "Demon Slayer: Kimetsu no Yaiba",                                      imageURL: "./content/DSKNY.avif",       musicURL: "./audio/DemonSlayerTheme.mp3"},
+    { title: "How Heavy are the Dumbbells You Lift?",                               imageURL: "./content/HHATDYL.avif",     musicURL: "./audio/DumbbellsTheme.mp3"},
+    { title: "Mob Psycho 100",                                                      imageURL: "./content/MP100.avif",       musicURL: "./audio/MobTheme.mp3"},
+    { title: "takt op.Destiny",                                                     imageURL: "./content/TOD.jpe",          musicURL: "./audio/DestinyTheme.mp3"},
+    { title: "Fire Force",                                                          imageURL: "./content/FF.avif",          musicURL: "./audio/FireForceTheme.mp3"},
+    { title: "Chainsaw Man",                                                        imageURL: "./content/CM.avif",          musicURL: "./audio/ChainsawTheme.mp3"},
+    { title: "Love After World Domination",                                         imageURL: "./content/LAWD.jpe",         musicURL: "./audio/WorldDominationTheme.mp3"},
+    { title: "The Daily Life of the Immortal King",                                 imageURL: "./content/TDLOTIK.avif",     musicURL: "./audio/ImmortalKingTheme.mp3"},
+    { title: "Bleach",                                                              imageURL: "./content/B.webp",           musicURL: "./audio/BleachTheme.mp3"},
+    { title: "Black Clover",                                                        imageURL: "./content/BC.avif",          musicURL: "./audio/BlackCloverTheme.mp3"},
+    { title: "Sword Art Online",                                                    imageURL: "./content/SAO.avif",         musicURL: "./audio/SAOTheme.mp3"},
+    { title: "Prison School",                                                       imageURL: "./content/PS.jpe",           musicURL: "./audio/PrisonSchoolTheme.mp3"},
+    { title: "Assassination Classroom",                                             imageURL: "./content/AC.avif",          musicURL: "./audio/AssassinationClassroomTheme.mp3"},
+    { title: "Trapped in a Dating Sim: The World of Otome Games is Tough for Mobs", imageURL: "./content/TIADS.jpe",        musicURL: "./audio/DatingSimTheme.mp3"},
+    { title: "Darling in the FRANXX",                                               imageURL: "./content/DITFXX.avif",      musicURL: "./audio/FranxxTheme.mp3"},
+    { title: "Cells at Work! CODE BLACK",                                           imageURL: "./content/CAWCB.avif",       musicURL: "./audio/CodeBlackTheme.mp3"},
+    { title: "Life Lessons with Uramichi Oniisan",                                  imageURL: "./content/LLWUO.avif",       musicURL: "./audio/LifeLessonsTheme.mp3"},
+    { title: "Avatar: The Last Airbender",                                          imageURL: "./content/AvatarTLA.jpg"},
+    { title: "The Legend of Korra",                                                 imageURL: "./content/LegendOfKorra.png"},
+    { title: "ViVid Strike!",                                                       imageURL: "./content/vividstrike.webp", musicURL: "./audio/VividStrikeTheme.mp3"},
+    { title: "Delicious in Dungeon",                                                imageURL: "./content/DITD.jpeg",        musicURL: "./audio/DeliciousInDungeonTheme.mp3"}
+    // Add more anime entries here
+    ];
+
+    function renderAnimeList() {
+    const container = document.getElementById("animeGridContainer");
+    container.innerHTML = ""; // Clear existing content
+
+    animeList.forEach(anime => {
+        const animeBox = document.createElement("div");
+        animeBox.className = "animebox";
+        animeBox.style.backgroundImage = `linear-gradient(hsla(300, 50%, 50%, 0), 60%, black), url('${anime.imageURL}')`;
+
+        const title = document.createElement("h2");
+        title.textContent = anime.title;
+        animeBox.appendChild(title);
+
+        // Create an audio instance for each anime
+        const audio = new Audio(anime.musicURL);
+        anime.audio = audio; // Store the audio instance directly in the anime object
+
+        // Add click event to toggle play/stop for audio
+        animeBox.addEventListener("click", () => {
+            // Check if an audio file is currently playing and if it's the same one
+            if (window.currentAudio && window.currentAudio !== audio) {
+                window.currentAudio.pause();
+                window.currentAudio.currentTime = 0; // Reset to the beginning
+            }
+
+            // Toggle play/pause for the clicked anime's audio
+            if (audio.paused) {
+                audio.play();
+                window.currentAudio = audio; // Set current audio to the one being played
+            } else {
+                audio.pause();
+                audio.currentTime = 0; // Reset to the beginning
+                window.currentAudio = null; // Clear the current audio reference
+            }
+        });
+
+        container.appendChild(animeBox);
+    });
+}
+    // Initial render of the anime list
+    document.addEventListener("DOMContentLoaded", function() {
+        renderAnimeList();
+    });
+    </script>
+</body>
+</html>

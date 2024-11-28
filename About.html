@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>/*Style Box*/
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(227, 227, 227);
+            color: black;
+            font-size: 25px;
+        }
+        .topnav {
+            overflow: hidden;
+            background-color: #e9e9e9;
+        }
+        .topnav a {
+            float: left;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .topnav a:hover {
+            background-color: #fa0808;
+            color: whitesmoke;
+        }
+        .dark-mode-topnav a:hover {
+            background-color: #4a90e2 !important;
+            color: whitesmoke !important;
+        }
+        .topnav a.active,
+        .dark-mode-topnav a.active {
+            background-color: #2196F3;
+            color: white;
+        }
+        .dark-mode-topnav a.active:hover {
+            background-color: #4a90e2 !important;
+            color: whitesmoke !important;
+        }
+        .switch {
+            position: absolute;
+            top: -24px;
+            transform: translateY(-50%);
+            right: 10px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffec1a;
+            border-radius: 34px;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #3a14d1;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .header {
+            color: white;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+        .dark-mode-body {
+            background-color: rgb(32, 32, 32) !important;
+            color: rgb(227, 227, 227) !important;
+        }
+        .dark-mode-header {
+            background-color: red !important;
+            color: whitesmoke !important;
+        }
+        .dark-mode-topnav {
+            background-color: rgb(50,50,50) !important;
+        }
+        .dark-mode-topnav a {
+            background-color: rgb(50,50,50) !important;
+            color: whitesmoke !important;
+        }
+        .dark-mode-topnav #aboutLink.active {
+            background-color: red !important;
+            color: white !important;
+        }
+        ul, #myUL {
+            list-style-type: none;
+        }
+        #myUL {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .box::before {
+            content: "\2610";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .check-box::before {
+            content: "\2611"; 
+            color: dodgerblue;
+        }
+        .nested {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .grid-container {
+            display: grid; /* Enables CSS Grid layout, allowing for control over rows and columns */
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Creates responsive columns that are at least 250px wide, filling available space */
+            gap: 0px; /* Adds 20px of space between each grid item (the anime boxes) */
+            padding: 0px; /* Adds 10px of padding around the grid container */
+            place-items: center; /* Centers each grid item (anime box) both horizontally and vertically within its grid cell */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <b>Who is Henry Wise?</b>
+    </div>
+    <div class="topnav" id="topnav">
+        <a href="./index.html">Home</a>
+        <a id="aboutLink" class="active" href="./About.html">About</a>
+        <a href="./CV.html">CV</a>
+        <a href="./Contact.html">Contact</a>
+        <a href="./MyAnimeList.html" class="protected">MyAnimeList</a>
+        <a href="./Left4Dead.html" class="protected">Left4Dead</a>
+        <a href="./ystvcredits.html" class="protected">YSTV</a>
+        <a href="./Other.html" class="protected">Other</a>
+        <a href="#" onclick="login()">Login</a>
+        <a href="#" onclick="logout()">Logout</a>
+        <div style="position: absolute; right: 10px;">
+            <label class="switch">
+                <input type="checkbox" id="modeToggle" onclick="DarkFunction()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div style="padding: 20px;">
+            <b>About me:</b><br>
+            If you would like to know about my professional history, please check my <a href=".\CV.html">CV page</a>. Otherwise, my name is Henry Wise. I am a second-year mathematician currently in my second year of a <a href="https://www.york.ac.uk/study/undergraduate/courses/mmath-mathematics/">Master of Mathematics Degree (MMath)</a> at the <a href="https://www.york.ac.uk/">University of York</a>. As you have found my website you will have noticed that one of my current interests is Web Development! I also currently enjoy: 3D Design (Blender), Python, VScode (for webdev and this site), <a href="https://www.overleaf.com/">Overleaf</a> (for LaTeX formatting and Tikz graphing), editing videos in Davinci Resolve, Writing the occasional long-form emails and Factory Games (Such as <a href="https://www.satisfactorygame.com/">Satisfactory</a>).
+        </div>
+        <div>
+            <img src="content/Edit 1.png" alt="A photo of Henry Wise smiling in a field" title="Henry Wise" style="width: clamp(450px, 75%, 500px); position: relative; right: 20px;">
+        </div>
+    </div>
+    <div style="padding: 20px;">
+        I'm currently an active voice actor on the website Casting Call Club (making use of Audacity), and the leader of a second year study group for the modules: Quantum & Continuum Dynamics, Groups Rings & Fields, and Linear Algebra. Recently, I stepped down after a year as the Secretary of the Mathematics society, wherein I was required to make meeting minutes, weekly emails, organize meetings and keep the emails up to date. I am still involved with the society in assisting the new secretary and helping with committee "handover". In the past, I have been heavily involved in open evenings/days in my sixth form (representing the Mathematics department) and my secondary school (representing the physics and triple sciences). I have a <a href="https://github.com/HenryShmenry">GitHub</a> detailed in <a href="./Contact.html">Contacts</a>, where I occasionally update my TeX. Outside of coding, I am currently Tutoring an A-level student in mathematics aiming for an A with the <a href="https://www.aqa.org.uk/">AQA</a> exam board.<br> I am currently reading Quantum Mechanics: The Theoretical Minimum by Leonard Susskind & Art Friedman.
+    </div>
+    <div style="padding: 20px; width: 65%;">Here's what I'm studying: (click the tree to see)
+    <ul id="myUL">
+        <li>
+            <span class="box">Module PDFs</span>
+            <ul class="nested">
+                <li>
+                    <span class="box">1st Year</span>
+                    <ul class="nested">
+                        <li>
+                            <span class="box">Algebra</span>
+                            <ul class="nested">
+                                <li><a href="documents/Alg_LectureNotes.pdf">Autumn Notes - Emilie Dufresne</a></li>
+                                <li><a href="documents/NotesWeek10.pdf">Spring Notes - Zaq Coelho</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Maths Skills 1</span>
+                            <ul class="nested">
+                                <li><a href="documents/mslectures22(hyperlink).pdf"> Notes - Chris Wood</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Calculus</span>
+                            <ul class="nested">
+                                <li><a href="documents/Calculus_22_Autumn_term.pdf">Autumn Notes - Karina Kirkina</a></li>
+                                <li><a href="documents/Calc_2223Notes.pdf">Spring Notes - Stefan Weigert</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Real Analysis</span>
+                            <ul class="nested">
+                                <li><a href="documents/real_analysis_rm.pdf">Real Analysis Notes - Simon Eveson</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Intro to Applied</span>
+                            <ul class="nested">
+                                <li><a href="documents/notes_v1_sans.pdf">Intro to Applied - Sam Crawford</a></li>
+                                <li><a href="documents/IAMnotes.pdf">Intro to Applied - Niall MacKay</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Intro to Probability</span>
+                            <ul class="nested">
+                                <li><a href="documents/probnotes.pdf">Intro to Probablility - Sam Crawford</a></li>
+                                <li><a href="documents/RFORBEGINNERS.pdf">R for Beginners - Emmanuel Paradis</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="box">2nd Year</span>
+                    <ul class="nested">
+                        <li>
+                            <span class="box">Classical Dynamics</span>
+                            <ul class="nested">
+                                <li><a href="documents/cd-summary-2023.pdf">Classical Dynamics - Ed Corrigan</a></li>
+                                <li><a href="documents/IntroDynSys_lect_notes2023v2.pdf">Dynamical Systems - Konstantine Illin</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Vector & Complex Calc</span>
+                            <ul class="nested">
+                                <li><a href="documents/VC-2023-24-FC-sans-serif.pdf">Vector Calculus - Francesco Consentino</a></li>
+                                <li><a href="documents/fcv_lecture_notes.pdf">Complex Calculus - Eric Dykeman</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Metric Spaces</span>
+                            <ul class="nested">
+                                <li><a href="documents/Metric_Spaces_Notes.pdf">Metric Spaces - Henry Wise</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Groups, Rings & Fields</span>
+                            <ul class="nested">
+                                <li><a href="documets/groupslecturenotes2324_final.pdf">Groups Notes - Victoria Gould</a></li>
+                                <li><a href="documents/slides-semester.pdf">Rings & Fields Notes - Maxim Nazarov</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Linear Algebra</span>
+                            <ul class="nested">
+                                <li><a href="documents/LinearAlgebraLectureNotes2024_3.pdf">Linear Algebra Notes - Evgeniy Zorin</a></li>
+                                <li><a href="documents/LinAlgeNotesPart2-13.pdf">Linear Algebra Notes - Karina Kirkina</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">Quantum & Continuum Dynamics</span>
+                            <ul class="nested">
+                                <li><a href="documents/parts1_and_2.pdf">Quantum & Continuum Dynamics - Stefano Negro</a></li>
+                                <li><a href="documents/Fluids_notes2923_24.pdf">Fluid Dynamics - Konstantine Illin</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="box">LaTeX Training</span>
+                            <ul class="nested">
+                                <li><a href="documents/lshort.pdf">Short Introduction - Eli Hawkins</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="box">3rd Year</span>   
+                    <ul class="nested"></ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+    <script>
+        function DarkFunction() {
+            var body = document.body;
+            var isDarkMode = body.classList.toggle("dark-mode-body");
+            document.querySelector(".header").classList.toggle("dark-mode-header");
+            document.querySelector(".topnav").classList.toggle("dark-mode-topnav");
+
+            var links = document.querySelectorAll(".topnav a");
+            links.forEach(link => link.classList.toggle("dark-mode-topnav"));
+
+            var activeLink = document.getElementById("aboutLink");
+            if (activeLink) {
+                activeLink.classList.toggle("dark-mode-active");
+            }
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var darkModeStatus = localStorage.getItem('darkMode');
+            var checkbox = document.getElementById('modeToggle');
+            if (darkModeStatus === 'enabled') {
+                document.body.classList.add("dark-mode-body");
+                document.querySelector(".header").classList.add("dark-mode-header");
+                document.querySelector(".topnav").classList.add("dark-mode-topnav");
+                document.querySelectorAll(".topnav a").forEach(link => link.classList.add("dark-mode-topnav"));
+                var activeLink = document.getElementById("aboutLink");
+                if (activeLink) {
+                    activeLink.classList.add("dark-mode-active");
+                }
+                checkbox.checked = true;
+            }
+            showProtectedLinks(); // Ensure protected links are correctly shown or hidden
+        });
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'About.html';
+        }
+    
+        function showProtectedLinks() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const protectedLinks = document.querySelectorAll('.protected');
+            protectedLinks.forEach(link => {
+                link.style.display = isLoggedIn ? 'block' : 'none';
+            });
+        }
+        function login() {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
