@@ -252,6 +252,34 @@
             padding: 8px;
             margin-bottom: 10px;
         }
+
+        /* Style the scrollbar */
+        ::-webkit-scrollbar {
+        width: 12px; /* Set the width of the scrollbar */
+        height: 12px; /* Set the height of the scrollbar if it's horizontal */
+        }
+
+        /* Style the track (the background of the scrollbar) */
+        ::-webkit-scrollbar-track {
+        background: rgb(32, 32, 32); /* Light gray background */
+        border-radius: 10px; /* Rounded corners */
+        }
+
+        /* Style the thumb (the draggable part) */
+        ::-webkit-scrollbar-thumb {
+        background: #888; /* Dark gray color */
+        border-radius: 10px; /* Rounded corners */
+        }
+
+        /* Style the thumb on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #f1f1f1; /* Darker color when hovered */
+        }
+
+        /* Style the scrollbar corner (if present) */
+        ::-webkit-scrollbar-corner {
+        background: #f1f1f1; /* Color of the corner when both scrollbars are visible */
+        }
     </style>
 </head>
 <body onload="Loading()" style="margin:0;">
