@@ -203,6 +203,7 @@
             background-size: cover; /* Ensures the background image covers the entire anime box without distortion */
             background-position: center; /* Centers the background image within the anime box */
             background-repeat: no-repeat;
+
         }
 
         .animebox {
@@ -222,6 +223,11 @@
             background-repeat: no-repeat;
             background-image: linear-gradient(hsla(300, 50%, 50%, 0), 60%, black); /* Gradient overlay */
             text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .animebox:hover {
+            transform: scale(1.2);
         }
 
         .animebox h2 {
@@ -372,6 +378,7 @@
     { title: "Love After World Domination",                                         imageURL: "./content/LAWD.jpe",         musicURL: "./audio/WorldDominationTheme.mp3"},
     { title: "The Daily Life of the Immortal King",                                 imageURL: "./content/TDLOTIK.avif",     musicURL: "./audio/ImmortalKingTheme.mp3"},
     { title: "Bleach",                                                              imageURL: "./content/B.webp",           musicURL: "./audio/BleachTheme.mp3"},
+    { title: "Bleach: Thousand Year Blood War",                                     imageURL: "./content/BTYBW.webp",       musicURL: "./audio/BTYBWop.mp3"},
     { title: "Black Clover",                                                        imageURL: "./content/BC.avif",          musicURL: "./audio/BlackCloverTheme.mp3"},
     { title: "Sword Art Online",                                                    imageURL: "./content/SAO.avif",         musicURL: "./audio/SAOTheme.mp3"},
     { title: "Prison School",                                                       imageURL: "./content/PS.jpe",           musicURL: "./audio/PrisonSchoolTheme.mp3"},
