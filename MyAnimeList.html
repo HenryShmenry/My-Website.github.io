@@ -376,22 +376,19 @@
     <div style="display:none; text-align: center;" id="animeListContainer" class="animate-bottom">
         <div style="padding-top: 15px; padding-bottom: 10px;"><b>Welcome to my Anime List!</b></div>
         <div style="padding-top: 0px; padding-bottom: 15px; font-size: small;">(Click for Themes)</div>
-        
-        <div class="anime-listing" onclick="openPopup()">
-            <img src="anime-thumbnail.jpg" alt="Anime Title">
-            <p>Anime Title</p>
-          </div>
           
           <!-- Popup Modal / TEST CODE -->
-          <div id="popup" class="popup">
-            <div class="popup-content">
+          <div id="popup" class="popup" style="display: none;" onclick="handleOutsideClick(event)">
+            <div class="popup-content" onclick="event.stopPropagation()"> <!-- Prevent click propagation to parent -->
               <span class="close" onclick="closePopup()">×</span>
               <div class="popup-video">
+                <video controls>
+                  <source src="" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <div class="popup-description">
-                <p>Anime Description & Review!
-                </p>
-                <!-- Add more content as needed -->
+                <p></p>
               </div>
             </div>
           </div>
@@ -466,7 +463,7 @@
     }
 
     const animeList = [
-    { title: "Attack on Titan",                                                     imageURL: "./content/AOT.jpg",          musicURL: "./audio/AOTTheme.mp3"},
+    { title: "Attack on Titan",                                                     imageURL: "./content/AOT.jpg",          musicURL: "./audio/AOTTheme.mp3", videoURL: "https://www.youtube.com/watch?v=q85svvvC6ME&t=99s", description: "This is one of the first Anime I ever started. Being one of the most popular at the time, it was quick to draw my attention and make me wish as though I were flying through the sky, slashing titans!"},
     { title: "My Hero Academia",                                                    imageURL: "./content/MHA.avif",         musicURL: "./audio/MHAs7Theme.mp3"},
     { title: "Mashle: Magic and Muscles",                                           imageURL: "./content/MMAM.avif",        musicURL: "./audio/MashleTheme.mp3"},
     { title: "Solo Leveling",                                                       imageURL: "./content/SL.avif",          musicURL: "./audio/SoloLevelingTheme.mp3"},
@@ -516,24 +513,24 @@
     ];
 
     function renderAnimeList() {
-    const container = document.getElementById("animeGridContainer");
-    container.innerHTML = ""; // Clear existing content
+        const container = document.getElementById("animeGridContainer");
+        container.innerHTML = ""; // Clear existing content
 
-    animeList.forEach(anime => {
-        const animeBox = document.createElement("div");
-        animeBox.className = "animebox";
-        animeBox.style.backgroundImage = `linear-gradient(hsla(300, 50%, 50%, 0), 60%, black), url('${anime.imageURL}')`;
+        animeList.forEach((anime, index) => {
+            const animeBox = document.createElement("div");
+            animeBox.className = "animebox";
+            animeBox.style.backgroundImage = `linear-gradient(hsla(300, 50%, 50%, 0), 60%, black), url('${anime.imageURL}')`;
 
-        const title = document.createElement("h2");
-        title.textContent = anime.title;
-        animeBox.appendChild(title);
+            const title = document.createElement("h2");
+            title.textContent = anime.title;
+            animeBox.appendChild(title);
 
-        // Create an audio instance for each anime
-        const audio = new Audio(anime.musicURL);
-        anime.audio = audio; // Store the audio instance directly in the anime object
+            // Create an audio instance for each anime
+            const audio = new Audio(anime.musicURL);
+            anime.audio = audio; // Store the audio instance directly in the anime object
 
-        // Add click event to toggle play/stop for audio
-        animeBox.addEventListener("click", () => {
+            // Add click event to toggle play/stop for audio
+            animeBox.addEventListener("click", () => {
             // Check if an audio file is currently playing and if it's the same one
             if (window.currentAudio && window.currentAudio !== audio) {
                 window.currentAudio.pause();
@@ -549,31 +546,80 @@
                 audio.currentTime = 0; // Reset to the beginning
                 window.currentAudio = null; // Clear the current audio reference
             }
+
+            // Open the pop-up for the clicked anime
+            openPopup(index);
+            });
+
+            container.appendChild(animeBox);
+        });
+        }
+
+        // Function to handle clicks outside the popup to close it
+        function handleOutsideClick(event) {
+        const popupContent = document.querySelector('.popup-content');
+        
+        // If the click is outside the popup content, close the popup
+        if (!popupContent.contains(event.target)) {
+            closePopup();
+        }
+        }
+
+        // Function to open the popup with the clicked anime data
+    function openPopup(index) {
+        const anime = animeList[index];
+        const popup = document.getElementById('popup');
+
+        // Set the content of the popup dynamically
+        popup.querySelector('.popup-video video source').src = anime.videoURL;
+        popup.querySelector('.popup-description p').textContent = anime.description;
+        
+        // Display the pop-up
+        popup.style.display = 'flex';
+
+        // Get the video element in the pop-up
+        const video = popup.querySelector('.popup-video video');
+
+        // Add an event listener to start the video when it starts playing
+        video.addEventListener('play', () => {
+            // Pause any audio when the video starts playing
+            if (window.currentAudio) {
+            window.currentAudio.pause();
+            window.currentAudio.currentTime = 0; // Reset to the beginning
+            }
+        });
+    }
+
+        // Function to close the popup
+        function closePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+
+        // Reset video source to stop the video when closing the popup
+        const video = popup.querySelector('.popup-video video');
+        video.pause();
+        video.currentTime = 0;
+        video.querySelector('source').src = ''; // Clear the video source
+        }
+
+        // Function to get YouTube video ID from URL
+        function getYouTubeVideoId(url) {
+        const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/(\S+))|youtu\.be\/(\S+))/;
+        const match = url.match(regex);
+        return match ? (match[1] || match[2]) : null;
+        }
+
+        // Initial render of the anime list
+        document.addEventListener("DOMContentLoaded", function() {
+        renderAnimeList();
         });
 
-        container.appendChild(animeBox);
-    });
-}
-    // Initial render of the anime list
-    document.addEventListener("DOMContentLoaded", function() {
-        renderAnimeList();
-    });
-
-    // Function to open the popup
-    function openPopup() {
-    document.getElementById('popup').style.display = 'flex';
-    }
-
-    // Function to close the popup
-    function closePopup() {
-    document.getElementById('popup').style.display = 'none';
-    }
-
-    document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") {
-        closePopup();
-    }
-    });
+        // Close popup when pressing the escape key
+        document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            closePopup();
+        }
+        });
     </script>
 </body>
 </html>
