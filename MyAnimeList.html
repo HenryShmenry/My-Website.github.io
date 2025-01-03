@@ -325,9 +325,9 @@
         }
 
         #popup-banner {
-            position: relative;
+            position: absolute;
             top: 0;
-            z-index: 0; /* Make sure the banner is on top of the content */
+            z-index: 0;
             width: 100%;
             height: 200px; /* Adjust based on your preference */
             object-fit: cover; /* Ensure the image covers the area without distortion */
@@ -384,16 +384,13 @@
         <div style="padding-top: 0px; padding-bottom: 15px; font-size: small;">(Click for Themes)</div>
           
           <!-- Popup Modal / TEST CODE -->
-          <div id="popup" class="popup" style="display: none;" onclick="handleOutsideClick(event)">
+        <div id="popup" class="popup" style="display: none;" onclick="handleOutsideClick(event)">
             <span class="close" onclick="closePopup()">×</span>
             <div class="popup-content" onclick="event.stopPropagation()"> <!-- Prevent click propagation to parent -->
               <img id="popup-banner" class="popup-banner" src="" alt="Anime Banner">
-              <div class="popup-description">
-                <p></p>
-              </div>
-              </div>
+              <div class="popup-description"><p></p></div>
             </div>
-          </div>
+        </div>
           <!-- End of Pop-up Test Code -->
 
         <div class="grid-container" id="animeGridContainer"></div>
@@ -582,7 +579,6 @@
         
         // Display the pop-up
         popup.style.display = 'flex';
-
         }
 
         // Function to close the popup
