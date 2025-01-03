@@ -474,52 +474,191 @@
     }
 
     const animeList = [
-    { title: "Attack on Titan",                                                     imageURL: "./content/AOT.jpg",          musicURL: "./audio/AOTTheme.mp3", summary: "Giants invade the world and only thing that can stop them are teenage angst, swords, political confusion, mass panic, sacrifice, pain, grit teeth and loud shouting.",description: "This is one of the first Anime I ever started. Being one of the most popular at the time, it was quick to draw my attention and make me wish as though I were flying through the sky, slashing titans! I was only able to finish this anime by 2024 when the final episodes were released. This one is most definitely worth it. 100%"},
-    { title: "My Hero Academia",                                                    imageURL: "./content/MHA.avif",         musicURL: "./audio/MHAs7Theme.mp3", description: "If you want to know why all the anime conventions smell so bad, watch this anime! All about a class of high school super hero students that are forced to face a generational threat are put up against a variety of difficult decisions and painful realities. This one is great, once you get past the not so great parts. I really liked some of the bits in this one and if you have the patience to get through it, it can be quite rewarding. 75%"},
-    { title: "Mashle: Magic and Muscles",                                           imageURL: "./content/MMAM.avif",        musicURL: "./audio/MashleTheme.mp3", description: "70%"},
-    { title: "Solo Leveling",                                                       imageURL: "./content/SL.avif",          musicURL: "./audio/SoloLevelingTheme.mp3", description: "75%"},
-    { title: "Jujutsu Kaisen",                                                      imageURL: "./content/JJK.jpe",          musicURL: "./audio/JJKTheme.mp3", description: "90%"},
-    { title: "Ranking of Kings",                                                    imageURL: "./content/ROKTTOC.avif",     musicURL: "./audio/RankingOfKingsTheme.mp3", description: "80%"},
-    { title: "Kabaneri of the Iron Fortress",                                       imageURL: "./content/KOTIF.jpe",        musicURL: "./audio/KabaneriTheme.mp3", description: "90%"},
-    { title: "Goblin Slayer",                                                       imageURL: "./content/GS.avif",          musicURL: "./audio/GoblinSlayerTheme.mp3", description: "65%"},
-    { title: "Cells at Work!",                                                      imageURL: "./content/CAW.avif",         musicURL: "./audio/CellsAtWorkTheme.mp3", description: "80%"},
-    { title: "Migi & Dali",                                                         imageURL: "./content/MAD.jpe",          musicURL: "./audio/MigiDaliTheme.mp3", description: "75%"},
-    { title: "Naruto",                                                              imageURL: "./content/N.avif",           musicURL: "./audio/NarutoTheme.mp3", description: "85%"},
-    { title: "Naruto Shippuden",                                                    imageURL: "./content/NS.avif",          musicURL: "./audio/NarutoSTheme.mp3", description: "90%"},
-    { title: "Spy x Family",                                                        imageURL: "./content/SF.avif",          musicURL: "./audio/SpyFamilyTheme.mp3", description: "85%"},
-    { title: "Dr. Stone",                                                           imageURL: "./content/DS.avif",          musicURL: "./audio/DrStoneTheme.mp3", description: "80%"},
-    { title: "One Punch Man",                                                       imageURL: "./content/OPM.avif",         musicURL: "./audio/OPMTheme.mp3", description: "75%"},
-    { title: "SK8 the Infinity",                                                    imageURL: "./content/SK8TI.avif",       musicURL: "./audio/SK8Theme.mp3", description: "80%"},
-    { title: "Parasyte -the maxim-",                                                imageURL: "./content/PTM.jpe",          musicURL: "./audio/ParasyteTheme.mp3", description: "70%"},
-    { title: "Death Note",                                                          imageURL: "./content/DN.avif",          musicURL: "./audio/DeathNoteTheme.mp3", description: "80%"},
-    { title: "My Deer Friend Nokotan",                                              imageURL: "./content/MDFN.avif",        musicURL: "./audio/NokotanTheme.mp3", description: "65%"},
-    { title: "Suzume",                                                              imageURL: "./content/S.avif",           musicURL: "./audio/SuzumeTheme.mp3", description: "85%"},
-    { title: "Hunter X Hunter",                                                     imageURL: "./content/HXH.avif",         musicURL: "./audio/HXHTheme.mp3", description: "85%"},
-    { title: "JoJo's Bizarre Adventure",                                            imageURL: "./content/JJBA.jpe",         musicURL: "./audio/JoJoTheme.mp3", description: "75%"},
-    { title: "Demon Slayer: Kimetsu no Yaiba",                                      imageURL: "./content/DSKNY.avif",       musicURL: "./audio/DemonSlayerTheme.mp3", description: "80%"},
-    { title: "How Heavy are the Dumbbells You Lift?",                               imageURL: "./content/HHATDYL.avif",     musicURL: "./audio/DumbbellsTheme.mp3", description: "55%"},
-    { title: "Mob Psycho 100",                                                      imageURL: "./content/MP100.avif",       musicURL: "./audio/MobTheme.mp3", description: "90%"},
-    { title: "takt op.Destiny",                                                     imageURL: "./content/TOD.jpe",          musicURL: "./audio/DestinyTheme.mp3", description: "75%"},
-    { title: "Fire Force",                                                          imageURL: "./content/FF.avif",          musicURL: "./audio/FireForceTheme.mp3", description: "80%"},
-    { title: "Chainsaw Man",                                                        imageURL: "./content/CM.avif",          musicURL: "./audio/ChainsawTheme.mp3", description: "75%"},
-    { title: "Love After World Domination",                                         imageURL: "./content/LAWD.jpe",         musicURL: "./audio/WorldDominationTheme.mp3", description: "Man... They're so cute together! 65%"},
-    { title: "The Daily Life of the Immortal King",                                 imageURL: "./content/TDLOTIK.avif",     musicURL: "./audio/ImmortalKingTheme.mp3", description: "So many references! 65%"},
-    { title: "Bleach",                                                              imageURL: "./content/B.webp",           musicURL: "./audio/BleachTheme.mp3", description: "Lots of filler, but redeems itself with absolute peak. 80%"},
-    { title: "Bleach: Thousand Year Blood War",                                     imageURL: "./content/BTYBW.webp",       musicURL: "./audio/BTYBWop.mp3", description: "Imagine peak, but cinema quality. Thousand year blood war scratches the itch that is overwhelming power with ease. 90%"},
-    { title: "Black Clover",                                                        imageURL: "./content/BC.avif",          musicURL: "./audio/BlackCloverTheme.mp3", description: ("Loud shouting, powerless swordsman ends up being the strongest wizard out there! This anime is known for almost every opening theme being a banger, watch out for some absolute fire tunes at the beginning of every episode. 75%")},
-    { title: "Sword Art Online",                                                    imageURL: "./content/SAO.avif",         musicURL: "./audio/SAOTheme.mp3", description: "Main character is so attractive apparently that any girl that even hears his name wishes to be married to this guy. It's a bit unrealistic, but hey, this is SAO. One of the best intro themes ever, and one that will stick with you for a while. I thought the idea was quite fun, but after 3 seasons, it seemed to start to get a bit slow. I would still recommend you understand what SAO is at least. 70%"},
-    { title: "Prison School",                                                       imageURL: "./content/PS.jpe",           musicURL: "./audio/PrisonSchoolTheme.mp3", description: "Don't ask me about what this anime is. Don't ask me where I heard about it. Don't ask me why I watched it. I was young. It seemed interesting at first, but then there was a lot of betrayal and I was actually focused on the story. There were no other reasons. I apologise for having seen this, though there is also a live action version for some reason. 50%"},
-    { title: "Assassination Classroom",                                             imageURL: "./content/AC.avif",          musicURL: "./audio/AssassinationClassroomTheme.mp3", description: "Kids are raised as assassins in a classroom where they need to kill an alien that is actually a really awesome teacher. 75%"},
-    { title: "Trapped in a Dating Sim: The World of Otome Games is Tough for Mobs", imageURL: "./content/TIADS.jpe",        musicURL: "./audio/DatingSimTheme.mp3", description: "The title of this anime should really tell you all you need to know... It's an overused premise, but I guess it was interesting enough to watch. The anime does often feel like nothing is actually happening and that it's a chore to watch, but some of the visuals can be cool. This one might not be worth your time, but it's a cool concept. 45%"},
-    { title: "Darling in the FRANXX",                                               imageURL: "./content/DITFXX.avif",      musicURL: "./audio/FranxxTheme.mp3", description: "I'm not sure if some of the content in this anime is entirely normal or appropriate, but the story really does punch you in the gut as hard as it can. This anime really pushes the limits of the phrase love has no bounds. This is a saddening story of betrayal, love and new beginnings. Do not get attached to the characters. I loved this story and would recommend this. 75%"},
-    { title: "Cells at Work! CODE BLACK",                                           imageURL: "./content/CAWCB.avif",       musicURL: "./audio/CodeBlackTheme.mp3", description: "This one is not as fun as the other one... Code black makes you really think hard about what you're putting into your body and your current hygiene routine. If everything could go wrong, code black aims to make you take responsibility for it. We follow some innocent blood cells, trapped in the body of a dying man who can't help but have every bad habit under the sun. Never before did I think I would feel sympathy for the blood in my veins, this one is definitely interesting and is also quite accurate with all of it's definitions / names. If you're an aspiring Biologist, watch this one! 75%"},
-    { title: "Life Lessons with Uramichi Oniisan",                                  imageURL: "./content/LLWUO.avif",       musicURL: "./audio/LifeLessonsTheme.mp3", description: "This is one of the most down to earth, unfortunately realistic anime that I have ever seen. It's a slice of life, if you could call it life. It does have a happy ending in some sense and you manage to really connect with the characters towards the end. This one has a theme that you will probably be able to sing... a lot. 75% "},
-    { title: "Avatar: The Last Airbender",                                          imageURL: "./content/AvatarTLA.jpg", description:"One of the first things that I watched the entirety of. It was three seasons of non-stop fun! I can still remember going to school with the idea of watching the next episode still on my mind. Follow Aang, the last airbender as he has to face his destiny, alongside katara and her idiot brother. This one will stick with you for life, for sure. It's a must watch for anyone who has seen anything. 85%"},
-    { title: "The Legend of Korra",                                                 imageURL: "./content/LegendOfKorra.png", description: "This is no Avatar: The last Airbender, this is a whole new story entirely. Korra is not your average avatar, definitely not the same as the last one. She has to struggle with a modern world and face the responsibilities that she didn't ask for in the first place. If you loved the previous story, this one is a faithful continuation that will make you miss what you once had, while appreciating that time goes on. I think it's worth the watch. 75%"},
-    { title: "ViVid Strike!",                                                       imageURL: "./content/vividstrike.webp", musicURL: "./audio/VividStrikeTheme.mp3", description: "This is one of the first anime that I watched to completion before sixth form. Vivid strike, being part of the magical girl saga is quite an interesting anime and somehow got me hooked on the complex emotional relationships of a group of MMA girls with magical powers. I watched this on Amazon prime a long time ago and had completely forgotten about it until late 2024 when ChatGPT helped me to figure out it's name using some vague memory. This must've been good to have kept me watching so long ago, I'll recommend it! 75%"},
-    { title: "Delicious in Dungeon",                                                imageURL: "./content/DITD.jpeg",        musicURL: "./audio/DeliciousInDungeonTheme.mp3", description: "Delicious in the Dungeon is so adorable and sweet! If you're new to anime and want something that is gentle, this is the one to watch. Follow a group of misguided adventurers trying to rescue one of their members from a dungeon filled with vast wildlife. Luckily, they have a chef who can cook said wildlife into a variety of unique and exotic dishes that'll get your mouth watering. I think this anime is so sweet and can't wait for the next season to be released! Please watch this is you can! 85%"},
-    { title: "DanDaDan",                                                            imageURL: "./content/dandadan.jpg",     musicURL: "./audio/dandadantheme.mp3", description: "This is a new anime that only just arrived in late 2024. Nonetheless, it's up there with some of the greats! If you're into the occult/ supernatural / sci-fi, this is the anime for you. We follow some geeks as they try to protect themselves, and their balls from everything alien, no matter how. This is a great slice of life and effortlessly creates an emotional bond between all of it's characters. I can't wait to see where it goes! I like this and I'm pretty sure you will too! 80%"},
-    { title: "Cyberpunk: Edgerunners",                                              imageURL: "./content/CbPER.avif",       musicURL: "./audio/CbPERMusic.mp3", description: "I watched this in one sitting and was then hit with the biggest exisential crisis of my life. I love and hate this anime. It is a beautiful experience with a wonderful, heartbreaking story. If you're a fan of the cyberpunk game or future scifi in general, this one might be the anime to bring a tear to your eye after completion. I love it, and now really want to go to the moon. 85%"}
+    { title: "Attack on Titan",                                                     imageURL: "./content/AOT.jpg",          musicURL: "./audio/AOTTheme.mp3", 
+      summary: "Giants invade the world and only thing that can stop them are teenage angst, swords, political confusion, mass panic, sacrifice, pain, grit teeth and loud shouting.",
+      description: "This is one of the first Anime I ever started. Being one of the most popular at the time, it was quick to draw my attention and make me wish as though I were flying through the sky, slashing titans! I was only able to finish this anime by 2024 when the final episodes were released. This one is most definitely worth it. 100%"
+    },
+
+    { title: "My Hero Academia",                                                    imageURL: "./content/MHA.avif",         musicURL: "./audio/MHAs7Theme.mp3",          
+      description: "If you want to know why all the anime conventions smell so bad, watch this anime! All about a class of high school super hero students that are forced to face a generational threat are put up against a variety of difficult decisions and painful realities. This one is great, once you get past the not so great parts. I really liked some of the bits in this one and if you have the patience to get through it, it can be quite rewarding. 75%"
+    },
+
+    { title: "Mashle: Magic and Muscles",                                           imageURL: "./content/MMAM.avif",        musicURL: "./audio/MashleTheme.mp3",         
+      description: "70%"
+    },
+
+    { title: "Solo Leveling",                                                       imageURL: "./content/SL.avif",          musicURL: "./audio/SoloLevelingTheme.mp3",   
+      description: "75%"
+    },
+
+    { title: "Jujutsu Kaisen",                                                      imageURL: "./content/JJK.jpe",          musicURL: "./audio/JJKTheme.mp3",            
+      description: "90%"
+    },
+
+    { title: "Ranking of Kings",                                                    imageURL: "./content/ROKTTOC.avif",     musicURL: "./audio/RankingOfKingsTheme.mp3", 
+    description: "80%"
+    },
+
+    { title: "Kabaneri of the Iron Fortress",                                       imageURL: "./content/KOTIF.jpe",        musicURL: "./audio/KabaneriTheme.mp3", 
+    description: "90%"
+    },
+
+    { title: "Goblin Slayer",                                                       imageURL: "./content/GS.avif",          musicURL: "./audio/GoblinSlayerTheme.mp3", 
+    description: "65%"
+    },
+
+    { title: "Cells at Work!",                                                      imageURL: "./content/CAW.avif",         musicURL: "./audio/CellsAtWorkTheme.mp3", 
+    description: "80%"
+    },
+
+    { title: "Migi & Dali",                                                         imageURL: "./content/MAD.jpe",          musicURL: "./audio/MigiDaliTheme.mp3", 
+    description: "75%"
+    },
+
+    { title: "Naruto",                                                              imageURL: "./content/N.avif",           musicURL: "./audio/NarutoTheme.mp3", 
+    description: "85%"
+    },
+
+    { title: "Naruto Shippuden",                                                    imageURL: "./content/NS.avif",          musicURL: "./audio/NarutoSTheme.mp3", 
+    description: "90%"
+    },
+
+    { title: "Spy x Family",                                                        imageURL: "./content/SF.avif",          musicURL: "./audio/SpyFamilyTheme.mp3", 
+    description: "85%"
+    },
+
+    { title: "Dr. Stone",                                                           imageURL: "./content/DS.avif",          musicURL: "./audio/DrStoneTheme.mp3", 
+    description: "80%"
+    },
+
+    { title: "One Punch Man",                                                       imageURL: "./content/OPM.avif",         musicURL: "./audio/OPMTheme.mp3", 
+    description: "75%"
+    },
+
+    { title: "SK8 the Infinity",                                                    imageURL: "./content/SK8TI.avif",       musicURL: "./audio/SK8Theme.mp3", 
+    description: "80%"
+    },
+    
+    { title: "Parasyte -the maxim-",                                                imageURL: "./content/PTM.jpe",          musicURL: "./audio/ParasyteTheme.mp3", 
+    description: "70%"
+    },
+    
+    { title: "Death Note",                                                          imageURL: "./content/DN.avif",          musicURL: "./audio/DeathNoteTheme.mp3", 
+    description: "80%"
+    },
+    
+    { title: "My Deer Friend Nokotan",                                              imageURL: "./content/MDFN.avif",        musicURL: "./audio/NokotanTheme.mp3", 
+    description: "65%"
+    },
+    
+    { title: "Suzume",                                                              imageURL: "./content/S.avif",           musicURL: "./audio/SuzumeTheme.mp3", 
+    description: "85%"
+    },
+    
+    { title: "Hunter X Hunter",                                                     imageURL: "./content/HXH.avif",         musicURL: "./audio/HXHTheme.mp3", 
+    description: "85%"
+    },
+    
+    { title: "JoJo's Bizarre Adventure",                                            imageURL: "./content/JJBA.jpe",         musicURL: "./audio/JoJoTheme.mp3", 
+    description: "75%"
+    },
+    
+    { title: "Demon Slayer: Kimetsu no Yaiba",                                      imageURL: "./content/DSKNY.avif",       musicURL: "./audio/DemonSlayerTheme.mp3", 
+    description: "80%"
+    },
+    
+    { title: "How Heavy are the Dumbbells You Lift?",                               imageURL: "./content/HHATDYL.avif",     musicURL: "./audio/DumbbellsTheme.mp3", 
+    description: "55%"
+    },
+    
+    { title: "Mob Psycho 100",                                                      imageURL: "./content/MP100.avif",       musicURL: "./audio/MobTheme.mp3", 
+    description: "90%"
+    },
+    
+    { title: "takt op.Destiny",                                                     imageURL: "./content/TOD.jpe",          musicURL: "./audio/DestinyTheme.mp3", 
+    description: "75%"
+    },
+    
+    { title: "Fire Force",                                                          imageURL: "./content/FF.avif",          musicURL: "./audio/FireForceTheme.mp3", 
+    description: "80%"
+    },
+    
+    { title: "Chainsaw Man",                                                        imageURL: "./content/CM.avif",          musicURL: "./audio/ChainsawTheme.mp3", 
+    description: "75%"
+    },
+    
+    { title: "Love After World Domination",                                         imageURL: "./content/LAWD.jpe",         musicURL: "./audio/WorldDominationTheme.mp3", 
+    description: "Man... They're so cute together! 65%"
+    },
+    
+    { title: "The Daily Life of the Immortal King",                                 imageURL: "./content/TDLOTIK.avif",     musicURL: "./audio/ImmortalKingTheme.mp3", 
+    description: "So many references! 65%"
+    },
+    
+    { title: "Bleach",                                                              imageURL: "./content/B.webp",           musicURL: "./audio/BleachTheme.mp3", 
+    description: "Lots of filler, but redeems itself with absolute peak. 80%"
+    },
+    
+    { title: "Bleach: Thousand Year Blood War",                                     imageURL: "./content/BTYBW.webp",       musicURL: "./audio/BTYBWop.mp3", 
+    description: "Imagine peak, but cinema quality. Thousand year blood war scratches the itch that is overwhelming power with ease. 90%"
+    },
+    
+    { title: "Black Clover",                                                        imageURL: "./content/BC.avif",          musicURL: "./audio/BlackCloverTheme.mp3", 
+    description: ("Loud shouting, powerless swordsman ends up being the strongest wizard out there! This anime is known for almost every opening theme being a banger, watch out for some absolute fire tunes at the beginning of every episode. 75%")
+    },
+    
+    { title: "Sword Art Online",                                                    imageURL: "./content/SAO.avif",         musicURL: "./audio/SAOTheme.mp3", 
+    description: "Main character is so attractive apparently that any girl that even hears his name wishes to be married to this guy. It's a bit unrealistic, but hey, this is SAO. One of the best intro themes ever, and one that will stick with you for a while. I thought the idea was quite fun, but after 3 seasons, it seemed to start to get a bit slow. I would still recommend you understand what SAO is at least. 70%"
+    },
+    
+    { title: "Prison School",                                                       imageURL: "./content/PS.jpe",           musicURL: "./audio/PrisonSchoolTheme.mp3", 
+    description: "Don't ask me about what this anime is. Don't ask me where I heard about it. Don't ask me why I watched it. I was young. It seemed interesting at first, but then there was a lot of betrayal and I was actually focused on the story. There were no other reasons. I apologise for having seen this, though there is also a live action version for some reason. 50%"
+    },
+    
+    { title: "Assassination Classroom",                                             imageURL: "./content/AC.avif",          musicURL: "./audio/AssassinationClassroomTheme.mp3", 
+    description: "Kids are raised as assassins in a classroom where they need to kill an alien that is actually a really awesome teacher. 75%"
+    },
+    
+    { title: "Trapped in a Dating Sim: The World of Otome Games is Tough for Mobs", imageURL: "./content/TIADS.jpe",        musicURL: "./audio/DatingSimTheme.mp3", 
+    description: "The title of this anime should really tell you all you need to know... It's an overused premise, but I guess it was interesting enough to watch. The anime does often feel like nothing is actually happening and that it's a chore to watch, but some of the visuals can be cool. This one might not be worth your time, but it's a cool concept. 45%"
+    },
+    
+    { title: "Darling in the FRANXX",                                               imageURL: "./content/DITFXX.avif",      musicURL: "./audio/FranxxTheme.mp3", 
+    description: "I'm not sure if some of the content in this anime is entirely normal or appropriate, but the story really does punch you in the gut as hard as it can. This anime really pushes the limits of the phrase love has no bounds. This is a saddening story of betrayal, love and new beginnings. Do not get attached to the characters. I loved this story and would recommend this. 75%"
+    },
+    
+    { title: "Cells at Work! CODE BLACK",                                           imageURL: "./content/CAWCB.avif",       musicURL: "./audio/CodeBlackTheme.mp3", 
+    description: "This one is not as fun as the other one... Code black makes you really think hard about what you're putting into your body and your current hygiene routine. If everything could go wrong, code black aims to make you take responsibility for it. We follow some innocent blood cells, trapped in the body of a dying man who can't help but have every bad habit under the sun. Never before did I think I would feel sympathy for the blood in my veins, this one is definitely interesting and is also quite accurate with all of it's definitions / names. If you're an aspiring Biologist, watch this one! 75%"
+    },
+    
+    { title: "Life Lessons with Uramichi Oniisan",                                  imageURL: "./content/LLWUO.avif",       musicURL: "./audio/LifeLessonsTheme.mp3", 
+    description: "This is one of the most down to earth, unfortunately realistic anime that I have ever seen. It's a slice of life, if you could call it life. It does have a happy ending in some sense and you manage to really connect with the characters towards the end. This one has a theme that you will probably be able to sing... a lot. 75% "
+    },
+    
+    { title: "Avatar: The Last Airbender",                                          imageURL: "./content/AvatarTLA.jpg", 
+    description:"One of the first things that I watched the entirety of. It was three seasons of non-stop fun! I can still remember going to school with the idea of watching the next episode still on my mind. Follow Aang, the last airbender as he has to face his destiny, alongside katara and her idiot brother. This one will stick with you for life, for sure. It's a must watch for anyone who has seen anything. 85%"
+    },
+    
+    { title: "The Legend of Korra",                                                 imageURL: "./content/LegendOfKorra.png", 
+    description: "This is no Avatar: The last Airbender, this is a whole new story entirely. Korra is not your average avatar, definitely not the same as the last one. She has to struggle with a modern world and face the responsibilities that she didn't ask for in the first place. If you loved the previous story, this one is a faithful continuation that will make you miss what you once had, while appreciating that time goes on. I think it's worth the watch. 75%"
+    },
+    
+    { title: "ViVid Strike!",                                                       imageURL: "./content/vividstrike.webp", musicURL: "./audio/VividStrikeTheme.mp3", 
+    description: "This is one of the first anime that I watched to completion before sixth form. Vivid strike, being part of the magical girl saga is quite an interesting anime and somehow got me hooked on the complex emotional relationships of a group of MMA girls with magical powers. I watched this on Amazon prime a long time ago and had completely forgotten about it until late 2024 when ChatGPT helped me to figure out it's name using some vague memory. This must've been good to have kept me watching so long ago, I'll recommend it! 75%"
+    },
+    
+    { title: "Delicious in Dungeon",                                                imageURL: "./content/DITD.jpeg",        musicURL: "./audio/DeliciousInDungeonTheme.mp3", 
+    description: "Delicious in the Dungeon is so adorable and sweet! If you're new to anime and want something that is gentle, this is the one to watch. Follow a group of misguided adventurers trying to rescue one of their members from a dungeon filled with vast wildlife. Luckily, they have a chef who can cook said wildlife into a variety of unique and exotic dishes that'll get your mouth watering. I think this anime is so sweet and can't wait for the next season to be released! Please watch this is you can! 85%"
+    },
+    
+    { title: "DanDaDan",                                                            imageURL: "./content/dandadan.jpg",     musicURL: "./audio/dandadantheme.mp3", 
+    description: "This is a new anime that only just arrived in late 2024. Nonetheless, it's up there with some of the greats! If you're into the occult/ supernatural / sci-fi, this is the anime for you. We follow some geeks as they try to protect themselves, and their balls from everything alien, no matter how. This is a great slice of life and effortlessly creates an emotional bond between all of it's characters. I can't wait to see where it goes! I like this and I'm pretty sure you will too! 80%"
+    },
+    
+    { title: "Cyberpunk: Edgerunners",                                              imageURL: "./content/CbPER.avif",       musicURL: "./audio/CbPERMusic.mp3", 
+    description: "I watched this in one sitting and was then hit with the biggest exisential crisis of my life. I love and hate this anime. It is a beautiful experience with a wonderful, heartbreaking story. If you're a fan of the cyberpunk game or future scifi in general, this one might be the anime to bring a tear to your eye after completion. I love it, and now really want to go to the moon. 85%"
+    }
+
     // Add more anime entries here
     ];
 
