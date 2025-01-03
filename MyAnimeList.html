@@ -280,6 +280,76 @@
         ::-webkit-scrollbar-corner {
         background: rgb(32, 32, 32, 0); /* Color of the corner when both scrollbars are visible */
         }
+
+        /* Anime listing with hover animation */
+        .anime-listing {
+        position: relative;
+        width: 200px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        }
+
+        .anime-listing:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+        }
+
+        /* Popup styling */
+        .popup {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 20px;
+        word-wrap: break-word;
+        }
+
+        .popup-content {
+        background: rgb(60, 60, 60);
+        border-radius: 10px;
+        width: 80%;
+        max-width: 1000px;
+        padding: 20px;
+        overflow: hidden;
+        max-height: 90%;
+        display: flex;
+        flex-direction: column;
+        }
+
+        /* Video section */
+        .popup-video {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        }
+
+        /* Description section */
+        .popup-description {
+        max-height: 400px;
+        overflow-y: auto;
+        }
+
+        /* Close button */
+        .close {
+        position: absolute;
+        top: 5px;
+        left: 15px;
+        font-size: 36px;
+        color: #f1f1f1;
+        cursor: pointer;
+        transition: transform 0.4s ease; /* Causes the X to spin on hover*/
+        }
+
+        .close:hover {/* This controls how much the X spins*/
+            transform: rotate(90deg);
+            color: red;
+        }
     </style>
 </head>
 <body onload="Loading()" style="margin:0;">
@@ -306,6 +376,27 @@
     <div style="display:none; text-align: center;" id="animeListContainer" class="animate-bottom">
         <div style="padding-top: 15px; padding-bottom: 10px;"><b>Welcome to my Anime List!</b></div>
         <div style="padding-top: 0px; padding-bottom: 15px; font-size: small;">(Click for Themes)</div>
+        
+        <div class="anime-listing" onclick="openPopup()">
+            <img src="anime-thumbnail.jpg" alt="Anime Title">
+            <p>Anime Title</p>
+          </div>
+          
+          <!-- Popup Modal / TEST CODE -->
+          <div id="popup" class="popup">
+            <div class="popup-content">
+              <span class="close" onclick="closePopup()">×</span>
+              <div class="popup-video">
+              </div>
+              <div class="popup-description">
+                <p>Anime Description & Review!
+                </p>
+                <!-- Add more content as needed -->
+              </div>
+            </div>
+          </div>
+          <!-- End of Pop-up Test Code -->
+
         <div class="grid-container" id="animeGridContainer"></div>
     </div>
     <script>
@@ -466,6 +557,22 @@
     // Initial render of the anime list
     document.addEventListener("DOMContentLoaded", function() {
         renderAnimeList();
+    });
+
+    // Function to open the popup
+    function openPopup() {
+    document.getElementById('popup').style.display = 'flex';
+    }
+
+    // Function to close the popup
+    function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+    }
+
+    document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closePopup();
+    }
     });
     </script>
 </body>
