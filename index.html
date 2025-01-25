@@ -120,6 +120,37 @@
                 left: 25px;
             }
         }
+        #matrixButton {
+        background-image: url('./content/red_pill.png');
+        background-size: cover;   /* Ensure the image covers the whole button */
+        background-position: center;   /* Center the image */
+        border: none;   /* Remove border */
+        padding: 0;      /* Remove padding */
+        width: 50px;
+        height: 125px;
+        border-radius: 90px;
+        cursor: pointer; /* Keep the pointer cursor for clicking */
+        }
+        #matrixButtonBlue {
+            background-image: url('./content/blue_pill.png');
+            background-size: cover;   /* Ensure the image covers the whole button */
+            background-position: center;
+            border: none;   /* Remove border */
+            padding: 0;      /* Remove padding */
+            width: 50px;
+            height: 125px;
+            border-radius: 90px;
+            cursor: pointer;
+        }
+        #matrixCanvas {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        z-index: 30;
+        }
     </style>
 </head>
 <body>
@@ -152,6 +183,11 @@
             <div><b>You've found my website</b></div>
         </div>
         <img id="imageSwitcher" src="content/MeA.png" alt="Image" style="position:absolute; width:27.3%; left:10px; z-index: 2;">
+    </div>
+    <div style="align-items: center; justify-content: center;">
+    <button id="matrixButton"></button>
+    <button id="matrixButtonBlue"></button>
+    <canvas id="matrixCanvas"></canvas>
     </div>
     <button style="position: absolute; left: 45%;" onclick="toggleDiscoMode()">Disco Mode (Epilepsy Warning)</button>
     <script>
@@ -243,6 +279,53 @@
         function login() {
             window.location.href = 'login.html';
         }
+        document.getElementById("matrixButton").addEventListener("click", () => {
+        const canvas = document.getElementById("matrixCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Disable scrolling and show canvas
+        window.scrollTo(0, 0);
+        document.body.style.overflow = 'hidden';
+        canvas.style.display = "block";
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$£%^&*()";
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        function drawMatrix() {
+            // Use a faint background to maintain the matrix effect
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";  // Slightly transparent background for the matrix effect
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0F0";  // Default color for matrix drops
+            ctx.font = `${fontSize}px monospace`;
+
+            drops.forEach((y, index) => {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                const xPosition = index * fontSize;
+
+                // Draw the matrix drop character at the current position
+                ctx.fillText(text, xPosition, y * fontSize);
+
+                // Reset drop when it reaches the bottom of the canvas
+                if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[index] = 0;
+                }
+                drops[index]++;
+            });
+        }
+
+        setInterval(drawMatrix, 50);
+    });
+
+    // Function to disable the matrix effect
+    function disableMatrixEffect() {
+        document.body.style.overflow = '';
+        document.getElementById("matrixCanvas").style.display = "none";
+    }
     </script>
 </body>
 </html>
