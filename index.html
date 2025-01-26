@@ -118,9 +118,9 @@
             #imageSwitcher {
                 width: 50%;
                 left: 25px;
-            }
         }
-        #matrixButton {
+    }
+        #matrixButtonRed {
         background-image: url('./content/red_pill.png');
         background-size: cover;   /* Ensure the image covers the whole button */
         background-position: center;   /* Center the image */
@@ -130,7 +130,7 @@
         height: 125px;
         border-radius: 90px;
         cursor: pointer; /* Keep the pointer cursor for clicking */
-        }
+    }
         #matrixButtonBlue {
             background-image: url('./content/blue_pill.png');
             background-size: cover;   /* Ensure the image covers the whole button */
@@ -141,7 +141,7 @@
             height: 125px;
             border-radius: 90px;
             cursor: pointer;
-        }
+    }
         #matrixCanvas {
         display: none;
         position: absolute;
@@ -150,12 +150,34 @@
         top: 0;
         bottom: 0;
         z-index: 30;
-        }
+    }
+        #BadAppleCanvas {
+        display: none;  /* Initially hidden */
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9;  /* Ensure it's below the video */
+    }
+        #badAppleVideo {
+        display: none; /* Hidden initially */
+        position: absolute; /* Positioned over the entire screen */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10; /* Ensure it's above the canvas */
+    }
+    #matrixButtonRed, #matrixButtonBlue {
+        z-index: 10;  /* Ensure pills are above the video */
+    }
     </style>
 </head>
 <body>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <canvas id="matrixCanvas"></canvas>
+    <canvas id="BadAppleCanvas"></canvas>
     <div class="header">
         <b>Welcome to my website!</b>
     </div>
@@ -187,11 +209,14 @@
     </div>
     <button style="position: absolute; left: 45%;" onclick="toggleDiscoMode()">Disco Mode (Epilepsy Warning)</button>
     <div id="MatrixContent" style="align-items: center; justify-content: center; position: absolute; top: 1200px; transform: translateX(-50%); left: 50%; padding-bottom: 300px; padding-left: 0;">
-    <button id="matrixButton"></button>
+    <button id="matrixButtonRed"></button>
     <button id="matrixButtonBlue"></button>
-    
+    <video id="badAppleVideo" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;" muted autoplay loop controls="false">
+        <source src="content/BadApple.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     </div>
-    
+
     <script>
         function DarkFunction() {
             var body = document.body;
@@ -281,7 +306,7 @@
         function login() {
             window.location.href = 'login.html';
         }
-        document.getElementById("matrixButton").addEventListener("click", () => {
+        document.getElementById("matrixButtonRed").addEventListener("click", () => {
         const canvas = document.getElementById("matrixCanvas");
         const ctx = canvas.getContext("2d");
 
@@ -328,6 +353,19 @@
         document.body.style.overflow = '';
         document.getElementById("matrixCanvas").style.display = "none";
     }
+
+    document.getElementById("matrixButtonBlue").addEventListener("click", () => {
+    const video = document.getElementById("badAppleVideo");  // Get the embedded video element
+
+    // Show the video and position it behind the pills
+    video.style.display = "block";  // Make the video visible
+    video.style.top = 0;
+    video.style.left = 0;
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.zIndex = -1;  // Make sure the video is behind the pills
+    video.style.position = "relative"
+});
     </script>
 </body>
 </html>
